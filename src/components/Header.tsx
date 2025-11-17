@@ -1,0 +1,140 @@
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Mountain } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import WhatsAppButton from "./WhatsAppButton";
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Resorts", href: "/#resorts" },
+    { name: "Why Choose Us", href: "/#why-choose-us" },
+    { name: "Testimonials", href: "/#testimonials" },
+    { name: "FAQ", href: "/#faq" },
+  ];
+
+  const scrollToSection = (href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.substring(2);
+      const element = document.getElementById(id);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "glass-effect shadow-medium py-3"
+          : "bg-transparent py-5"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="bg-primary text-primary-foreground p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
+              <Mountain className="h-6 w-6" />
+            </div>
+            <div>
+              <h1 className={`font-bold text-xl ${isScrolled ? "text-foreground" : "text-white"}`}>
+                Dandeli Adventures
+              </h1>
+              <p className={`text-xs ${isScrolled ? "text-muted-foreground" : "text-white/80"}`}>
+                Experience Nature's Paradise
+              </p>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => {
+                  if (link.href.startsWith("/#")) {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                  }
+                }}
+                className={`font-medium transition-colors hover:text-primary ${
+                  isScrolled ? "text-foreground" : "text-white"
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:block">
+            <WhatsAppButton className="shadow-medium" />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`lg:hidden p-2 rounded-lg transition-colors ${
+              isScrolled
+                ? "text-foreground hover:bg-muted"
+                : "text-white hover:bg-white/10"
+            }`}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-4 pb-4 glass-effect rounded-xl shadow-large animate-fade-in">
+            <nav className="flex flex-col gap-2 p-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    if (link.href.startsWith("/#")) {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }
+                  }}
+                  className="py-3 px-4 rounded-lg font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="mt-2 px-4">
+                <WhatsAppButton className="w-full" />
+              </div>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
