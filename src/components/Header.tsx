@@ -7,12 +7,25 @@ import WhatsAppButton from "./WhatsAppButton";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [forceTransparent, setForceTransparent] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
+
+      // If we're on a hero/landing route (home or resort), keep header transparent
+      // until user scrolls past the threshold. Otherwise behave normally.
+      if (location.pathname === "/" || location.pathname.startsWith("/resort")) {
+        setForceTransparent(!scrolled);
+      } else {
+        setForceTransparent(false);
+      }
     };
+
+    // initialize
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -20,6 +33,20 @@ const Header = () => {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+  }, [location]);
+
+  // Ensure header stays transparent when landing on pages with hero banners
+  // (home and resort detail). This avoids the header showing the glass/bg
+  // on route change if the page is initially scrolled by the browser.
+  useEffect(() => {
+    // When route changes, set forceTransparent based on route.
+    if (location.pathname === "/" || location.pathname.startsWith("/resort")) {
+      setForceTransparent(true);
+      // ensure scrolled flag reflects current scroll position
+      setIsScrolled(window.scrollY > 50);
+    } else {
+      setForceTransparent(false);
+    }
   }, [location]);
 
   const navLinks = [
@@ -41,7 +68,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled && !forceTransparent
           ? "glass-effect shadow-medium py-3"
           : "bg-transparent py-5"
       }`}
@@ -53,11 +80,11 @@ const Header = () => {
             <div className="bg-primary text-primary-foreground p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
               <Mountain className="h-6 w-6" />
             </div>
-            <div>
-              <h1 className={`font-bold text-xl ${isScrolled ? "text-foreground" : "text-white"}`}>
-                Dandeli Adventures
+            <div className="min-w-0">
+              <h1 className={`font-bold text-xl truncate max-w-[220px] sm:max-w-none ${isScrolled && !forceTransparent ? "text-foreground" : "text-white"}`}>
+                Dandeli budget friendly resorts
               </h1>
-              <p className={`text-xs ${isScrolled ? "text-muted-foreground" : "text-white/80"}`}>
+              <p className={`text-xs truncate max-w-[220px] sm:max-w-none ${isScrolled && !forceTransparent ? "text-muted-foreground" : "text-white/80"}`}>
                 Experience Nature's Paradise
               </p>
             </div>
@@ -76,7 +103,7 @@ const Header = () => {
                   }
                 }}
                 className={`font-medium transition-colors hover:text-primary ${
-                  isScrolled ? "text-foreground" : "text-white"
+                  isScrolled && !forceTransparent ? "text-foreground" : "text-white"
                 }`}
               >
                 {link.name}
@@ -93,7 +120,7 @@ const Header = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled
+              isScrolled && !forceTransparent
                 ? "text-foreground hover:bg-muted"
                 : "text-white hover:bg-white/10"
             }`}
@@ -121,7 +148,7 @@ const Header = () => {
                       scrollToSection(link.href);
                     }
                   }}
-                  className="py-3 px-4 rounded-lg font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                  className="w-full py-3 px-4 rounded-lg font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                 >
                   {link.name}
                 </a>

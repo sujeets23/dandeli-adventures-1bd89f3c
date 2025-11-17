@@ -1,5 +1,5 @@
-import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Check, Clock, Shield } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { Check, Clock, Shield, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -39,7 +39,7 @@ const ResortDetail = () => {
       <Header />
       
       {/* Banner */}
-      <div className="relative h-[60vh] w-full mt-20">
+      <div className="relative h-[60vh] w-full mt-0">
         <img
           src={resort.bannerImage}
           alt={resort.name}
@@ -47,12 +47,7 @@ const ResortDetail = () => {
         />
         <div className="absolute inset-0 bg-gradient-overlay" />
         
-        <Link to="/" className="absolute top-6 left-6 z-10">
-          <Button variant="secondary" className="gap-2 shadow-large">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Resorts
-          </Button>
-        </Link>
+        {/* Back button removed site-wide per request */}
 
         <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
           <div className="max-w-7xl mx-auto">
@@ -66,13 +61,22 @@ const ResortDetail = () => {
         {/* Price & Amenities Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           <Card className="lg:col-span-2 p-8 shadow-medium border-0">
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Starting from</p>
-                <p className="text-4xl font-bold text-primary">{resort.price}</p>
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <p className="text-sm text-muted-foreground mb-2">Starting from</p>
+                  <p className="text-4xl font-bold text-primary">{resort.price}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <WhatsAppButton message={whatsappMessage} />
+                  <a
+                    href="tel:+918217885207"
+                    className="inline-flex items-center justify-center bg-primary text-primary-foreground px-4 py-3 rounded-lg font-semibold shadow-medium hover:bg-primary/90 transition-colors"
+                  >
+                    <Phone className="h-5 w-5 mr-2" />
+                    Call Now
+                  </a>
+                </div>
               </div>
-              <WhatsAppButton message={whatsappMessage} />
-            </div>
 
             <div className="border-t pt-6">
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -97,10 +101,19 @@ const ResortDetail = () => {
             </h3>
             <p className="text-muted-foreground mb-6">{resort.timings}</p>
             
-            <WhatsAppButton 
-              message={whatsappMessage}
-              className="w-full"
-            />
+            <div className="flex flex-col gap-3">
+              <WhatsAppButton 
+                message={whatsappMessage}
+                className="w-full"
+              />
+              <a
+                href="tel:+918217885207"
+                className="inline-flex items-center justify-center w-full bg-primary text-primary-foreground px-4 py-3 rounded-lg font-semibold shadow-medium hover:bg-primary/90 transition-colors"
+              >
+                <Phone className="h-5 w-5 mr-2" />
+                Call Now
+              </a>
+            </div>
           </Card>
         </div>
 
@@ -161,10 +174,19 @@ const ResortDetail = () => {
             <p className="font-bold text-xl">{resort.name}</p>
             <p className="text-primary font-semibold">{resort.price}</p>
           </div>
-          <WhatsAppButton 
-            message={whatsappMessage}
-            className="flex-1 md:flex-initial"
-          />
+          <div className="flex w-full flex-col md:flex-row gap-3 items-stretch md:items-center">
+            <WhatsAppButton 
+              message={whatsappMessage}
+              className="w-full md:w-auto"
+            />
+            <a
+              href="tel:+918217885207"
+              className="inline-flex items-center justify-center w-full md:w-auto bg-primary text-primary-foreground px-4 py-3 rounded-lg font-semibold shadow-medium hover:bg-primary/90 transition-colors"
+            >
+              <Phone className="h-5 w-5 mr-2" />
+              Call Now
+            </a>
+          </div>
         </div>
       </div>
 

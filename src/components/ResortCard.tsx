@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import WhatsAppButton from "./WhatsAppButton";
+import { Phone } from "lucide-react";
 
 interface ResortCardProps {
   id: string;
@@ -43,6 +45,19 @@ const ResortCard = ({ id, name, description, price, image }: ResortCardProps) =>
             <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
           </Button>
         </Link>
+        <div className="mt-3 grid grid-cols-1 gap-3">
+          <WhatsAppButton
+            message={`I wanted to book this resort: ${name}`}
+            className="w-full"
+          />
+          <a
+            href="tel:+918217885207"
+            className="inline-flex items-center justify-center w-full bg-primary text-primary-foreground px-4 py-3 rounded-lg font-semibold shadow-medium hover:bg-primary/90 transition-colors"
+          >
+            <Phone className="h-5 w-5 mr-2" />
+            Call Now
+          </a>
+        </div>
       </div>
     </Card>
   );

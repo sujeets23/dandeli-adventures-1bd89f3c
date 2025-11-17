@@ -114,6 +114,17 @@ const Footer = () => {
           <p className="text-background/60">
             © {new Date().getFullYear()} Dandeli Adventures. All rights reserved.
           </p>
+          <p className="text-background/60 mt-2">
+            Designed &amp; developed by {" "}
+            <a
+              href="https://dotlx.webflow.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-background/60 hover:text-primary transition-colors underline"
+            >
+              Dot labs
+            </a>
+          </p>
         </div>
       </div>
     </footer>
