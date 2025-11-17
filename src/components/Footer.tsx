@@ -1,6 +1,26 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigation = (href: string) => {
+    if (href.startsWith("/#")) {
+      const sectionId = href.substring(2);
+      
+      if (location.pathname !== "/") {
+        // Navigate to home first, then scroll
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
   return (
     <footer className="bg-foreground text-background py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -27,24 +47,36 @@ const Footer = () => {
             <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <a href="/#resorts" className="text-background/80 hover:text-primary transition-colors">
+                <button 
+                  onClick={() => handleNavigation("/#resorts")}
+                  className="text-background/80 hover:text-primary transition-colors"
+                >
                   Our Resorts
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#why-choose-us" className="text-background/80 hover:text-primary transition-colors">
+                <button 
+                  onClick={() => handleNavigation("/#why-choose-us")}
+                  className="text-background/80 hover:text-primary transition-colors"
+                >
                   Why Choose Us
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#testimonials" className="text-background/80 hover:text-primary transition-colors">
+                <button 
+                  onClick={() => handleNavigation("/#testimonials")}
+                  className="text-background/80 hover:text-primary transition-colors"
+                >
                   Testimonials
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#faq" className="text-background/80 hover:text-primary transition-colors">
+                <button 
+                  onClick={() => handleNavigation("/#faq")}
+                  className="text-background/80 hover:text-primary transition-colors"
+                >
                   FAQ
-                </a>
+                </button>
               </li>
             </ul>
           </div>
