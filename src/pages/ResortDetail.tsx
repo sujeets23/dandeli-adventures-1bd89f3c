@@ -3,6 +3,7 @@ import { ArrowLeft, Check, Clock, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { resorts } from "@/data/resorts";
 import { useState } from "react";
@@ -35,8 +36,10 @@ const ResortDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
+      
       {/* Banner */}
-      <div className="relative h-[60vh] w-full">
+      <div className="relative h-[60vh] w-full mt-20">
         <img
           src={resort.bannerImage}
           alt={resort.name}

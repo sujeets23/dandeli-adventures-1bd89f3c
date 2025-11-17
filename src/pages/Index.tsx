@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ResortCard from "@/components/ResortCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -11,6 +12,7 @@ import { resorts } from "@/data/resorts";
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <Header />
       <Hero />
       
       <section id="resorts" className="py-20 px-4 bg-background">
