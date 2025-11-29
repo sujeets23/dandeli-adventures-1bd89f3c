@@ -1,24 +1,55 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) - load only on production domain -->
+    <script>
+      (function() {
+        try {
+          var prodHost = 'dandelibudgetfriendlyresort.com';
+          if (window.location && window.location.hostname === prodHost) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17748401115';
+            document.head.appendChild(s);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);} 
+            window.gtag = window.gtag || gtag;
+            gtag('js', new Date());
+            gtag('config', 'AW-17748401115');
+          }
+        } catch (e) {
+          /* ignore errors */
+        }
+      })();
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dandeli Adventure Resorts | Best Stays & Adventure Packages</title>
+    <title>Dandeli Budget friendly resorts | Best Stays & Adventure Packages</title>
     <meta name="description" content="Explore premium resorts in Dandeli with adventure packages including white water rafting, kayaking, and jungle stays. Book your perfect getaway now!" />
     <meta name="author" content="Dandeli Tours" />
 
     <meta property="og:title" content="Dandeli Adventure Resorts | Best Stays & Adventure Packages" />
     <meta property="og:description" content="Explore premium resorts in Dandeli with adventure packages including white water rafting, kayaking, and jungle stays." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="https://dandelibudgetfriendlyresort.com/hero-dandeli.jpg" />
+    <meta property="og:url" content="https://dandelibudgetfriendlyresort.com" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@DandeliTours" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:image" content="https://dandelibudgetfriendlyresort.com/hero-dandeli.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
 
   <body>
