@@ -106,7 +106,7 @@ const Footer = () => {
           <p className="text-xs sm:text-sm text-background/60 mt-2">
             Site Designed &amp; developed by {" "}
             <a
-              href="https://dotlx.webflow.io"
+              href="https://dotlab.in"
               target="_blank"
               rel="noopener noreferrer"
               className="text-background/60 hover:text-primary transition-colors underline"
