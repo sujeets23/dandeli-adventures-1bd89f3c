@@ -1,6 +1,13 @@
 import resortJungle from "@/assets/resort-jungle.jpg";
 import resortRiverside from "@/assets/resort-riverside.jpg";
 import resortAdventure from "@/assets/resort-adventure.jpg";
+import resort1Hero from "@/assets/resort 1 images/resort 1 hero.jpg";
+import resort2Hero from "@/assets/resort 2 images/resort 2 hero.jpg";
+import resort3Hero from "@/assets/resort 3 images/resort 3 hero.jpg";
+import resort4Hero from "@/assets/resort 4 images/resort 4 hero.jpg";
+import resort5Hero from "@/assets/resort 5 images/resort 5 hero.jpg";
+import resort6Hero from "@/assets/resort 6 images/resort 6 hero.jpg";
+// Asset-folder imports removed (filenames contain spaces) — dynamic loader will use `assetFolder` at runtime.
 
 export interface Resort {
   id: string;
@@ -9,6 +16,8 @@ export interface Resort {
   price: string;
   image: string;
   bannerImage: string;
+  assetFolder?: string;
+  assetKeyword?: string;
   amenities: string[];
   inclusions: string[];
   timings: string;
@@ -19,31 +28,33 @@ export interface Resort {
 export const resorts: Resort[] = [
   {
     id: "jungle-paradise",
-    name: "Jungle Paradise Resort",
+    name: "Luxury stay",
     description: "Luxury wooden cottages nestled in dense forest with river views and premium amenities",
-    price: "₹3,999/night",
-    image: resortJungle,
-    bannerImage: resortJungle,
+    price: "₹1,800/day",
+    image: resort1Hero,
+    bannerImage: resort1Hero,
+    assetFolder: "resort images",
+    assetKeyword: "fly wings",
     amenities: [
       "Air-conditioned cottages",
-      "River-facing balconies", 
       "In-house restaurant",
       "Free WiFi",
       "24/7 hot water",
-      "Swimming pool"
+      "Swimming pool",
+      "Rain Dance",
+      "parking area"
     ],
     inclusions: [
       "White water rafting (Grade 2-3)",
       "Kayaking session",
-      "Jungle safari",
-      "Bird watching tour",
+      "Zorbing",
+      "Boating",
       "Bonfire with music",
       "All meals (breakfast, lunch, dinner)",
       "Safety equipment & expert guides"
     ],
-    timings: "Check-in: 12:00 PM | Check-out: 11:00 AM",
+    timings: "Check-in: 11:00 AM | Check-out: 10:00 AM",
     terms: [
-      "Minimum 2 nights booking required during peak season",
       "50% advance payment required for confirmation",
       "Cancellation 7 days prior - full refund",
       "Cancellation 3-7 days prior - 50% refund",
@@ -54,29 +65,31 @@ export const resorts: Resort[] = [
   },
   {
     id: "riverside-retreat",
-    name: "Riverside Retreat",
+    name: "Premium villa",
     description: "Modern resort with infinity pool, spa facilities, and stunning mountain backdrop views",
-    price: "₹4,499/night",
-    image: resortRiverside,
-    bannerImage: resortRiverside,
+    price: "₹1,500/day",
+    image: resort2Hero,
+    bannerImage: resort2Hero,
+    assetFolder: "resort images",
+    assetKeyword: "jungle edge",
     amenities: [
       "Deluxe AC rooms",
       "Infinity pool",
-      "Spa & wellness center",
-      "Multi-cuisine restaurant",
-      "Gym facilities",
-      "Private beach access"
+      "Free WiFi",
+      "24/7 hot water",
+      "parking facility",
+      "Rain Dance"
     ],
     inclusions: [
-      "White water rafting expedition",
-      "Coracle ride",
-      "Zip-lining adventure",
-      "Nature trekking",
-      "Campfire evening",
-      "Complimentary breakfast & dinner",
-      "Professional photography session"
+      "White water rafting (Grade 2-3)",
+      "Kayaking session",
+      "Zorbing",
+      "Boating",
+      "Bonfire with music",
+      "All meals (breakfast, lunch, dinner)",
+      "Safety equipment & expert guides"
     ],
-    timings: "Check-in: 1:00 PM | Check-out: 11:00 AM",
+    timings: "Check-in: 11:00 AM | Check-out: 10:00 AM",
     terms: [
       "Advance booking recommended",
       "30% advance for reservation",
@@ -89,27 +102,32 @@ export const resorts: Resort[] = [
   },
   {
     id: "adventure-camp",
-    name: "Wild Adventure Camp",
+    name: "Elite residence",
     description: "Authentic camping experience with luxury tents, bonfire nights, and thrilling adventure packages",
-    price: "₹2,999/night",
-    image: resortAdventure,
-    bannerImage: resortAdventure,
+    price: "₹1,500/day",
+    image: resort3Hero,
+    bannerImage: resort3Hero,
+    assetFolder: "resort images",
+    assetKeyword: "lake velly",
     amenities: [
       "Luxury safari tents",
       "Attached washrooms",
       "Outdoor dining area",
       "Bonfire pit",
       "Stargazing deck",
-      "Adventure sports equipment"
+      "Adventure sports equipment",
+      "Swimming pool",
+      "Rain Dance",
+      "parking area"
     ],
     inclusions: [
-      "River rafting (full day)",
-      "Kayaking & canoeing",
-      "Rock climbing",
-      "Rappelling",
-      "Forest trekking",
-      "BBQ dinner with bonfire",
-      "Buffet meals included"
+      "White water rafting (Grade 2-3)",
+      "Kayaking session",
+      "Zorbing",
+      "Boating",
+      "Bonfire with music",
+      "All meals (breakfast, lunch, dinner)",
+      "Safety equipment & expert guides"
     ],
     timings: "Check-in: 11:00 AM | Check-out: 10:00 AM",
     terms: [
@@ -124,29 +142,31 @@ export const resorts: Resort[] = [
   },
   {
     id: "forest-haven",
-    name: "Forest Haven Lodge",
+    name: "Signature stay",
     description: "Eco-friendly lodge with treehouse stays and immersive nature experiences",
-    price: "₹3,499/night",
-    image: resortJungle,
-    bannerImage: resortJungle,
+    price: "₹1,000/day",
+    image: resort4Hero,
+    bannerImage: resort4Hero,
+    assetFolder: "resort images",
+    assetKeyword: "river point",
     amenities: [
       "Treehouse accommodations",
       "Eco-friendly facilities",
-      "Organic farm restaurant",
-      "Nature library",
-      "Yoga & meditation area",
-      "Wildlife observation deck"
+      "Swimming pool",
+      "Rain Dance",
+      "Dining area",
+      "parking area"
     ],
     inclusions: [
-      "Guided nature walks",
-      "Bird watching expedition",
-      "Kayaking on calm waters",
-      "Village tour",
-      "Sunset river cruise",
-      "Farm-to-table dining experience",
-      "Morning yoga sessions"
+      "White water rafting (Grade 2-3)",
+      "Kayaking session",
+      "Zorbing",
+      "Boating",
+      "Bonfire with music",
+      "All meals (breakfast, lunch, dinner)",
+      "Safety equipment & expert guides"
     ],
-    timings: "Check-in: 12:00 PM | Check-out: 11:00 AM",
+    timings: "Check-in: 11:00 AM | Check-out: 10:00 AM",
     terms: [
       "Eco-conscious travelers preferred",
       "Single-use plastic not allowed",
@@ -159,29 +179,31 @@ export const resorts: Resort[] = [
   },
   {
     id: "kali-riverside",
-    name: "Kali Riverside Resort",
+    name: "Majestic stay",
     description: "Premium beachfront resort with water sports and luxury accommodation facilities",
-    price: "₹5,299/night",
-    image: resortRiverside,
-    bannerImage: resortRiverside,
+    price: "₹1,300/day",
+    image: resort5Hero,
+    bannerImage: resort5Hero,
+    assetFolder: "resort images",
+    assetKeyword: "royal nirvana",
     amenities: [
       "Premium suites",
-      "Private balconies",
-      "Fine dining restaurant",
-      "Poolside bar",
-      "Conference facilities",
-      "Concierge services"
+      "Swimming pool",
+      "Rain Dance",
+      "Tenthouse",
+      "AC & non-AC cottage",
+      "parking area"
     ],
     inclusions: [
-      "White water rafting (premium)",
-      "Jet ski rides",
-      "Parasailing adventure",
-      "Sunset boat cruise",
-      "Live entertainment",
-      "All-inclusive meal plan",
-      "Complimentary airport transfers"
+      "White water rafting (Grade 2-3)",
+      "Kayaking session",
+      "Zorbing",
+      "Boating",
+      "Bonfire with music",
+      "All meals (breakfast, lunch, dinner)",
+      "Safety equipment & expert guides"
     ],
-    timings: "Check-in: 2:00 PM | Check-out: 12:00 PM",
+    timings: "Check-in: 11:00 AM | Check-out: 10:00 AM",
     terms: [
       "Premium luxury experience",
       "Advance booking mandatory",
@@ -194,27 +216,31 @@ export const resorts: Resort[] = [
   },
   {
     id: "mountain-view",
-    name: "Mountain View Cottages",
+    name: "Grand residence",
     description: "Hilltop cottages with panoramic views, cozy interiors, and peaceful ambiance",
-    price: "₹3,299/night",
-    image: resortAdventure,
-    bannerImage: resortAdventure,
+    price: "₹1,200/day",
+    image: resort6Hero,
+    bannerImage: resort6Hero,
+    assetFolder: "resort images",
+    assetKeyword: "fly wings",
     amenities: [
       "Valley-view cottages",
       "Fireplace in rooms",
       "Garden restaurant",
       "Barbecue area",
       "Children's play area",
-      "Parking facilities"
+      "Swimming pool",
+      "Rain Dance",
+      "parking area"
     ],
     inclusions: [
-      "Mountain trekking",
-      "Valley rappelling",
-      "River crossing activities",
-      "Camping under stars",
-      "Local cultural performances",
-      "Homestyle cooking classes",
-      "Nature photography tour"
+      "White water rafting (Grade 2-3)",
+      "Kayaking session",
+      "Zorbing",
+      "Boating",
+      "Bonfire with music",
+      "All meals (breakfast, lunch, dinner)",
+      "Safety equipment & expert guides"
     ],
     timings: "Check-in: 11:00 AM | Check-out: 10:00 AM",
     terms: [

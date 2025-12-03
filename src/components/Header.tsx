@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Mountain } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import WhatsAppButton from "./WhatsAppButton";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +51,7 @@ const Header = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Resorts", href: "/#resorts" },
+    { name: "Activities", href: "/#activities" },
     { name: "Why Choose Us", href: "/#why-choose-us" },
     { name: "Testimonials", href: "/#testimonials" },
     { name: "FAQ", href: "/#faq" },
@@ -77,14 +77,14 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="bg-primary text-primary-foreground p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
-              <Mountain className="h-6 w-6" />
+            <div className="group-hover:scale-110 transition-transform duration-300">
+              <img src={logo} alt="Logo" className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full object-cover" />
             </div>
             <div className="min-w-0">
-              <h1 className={`font-bold text-xl truncate max-w-[220px] sm:max-w-none ${isScrolled && !forceTransparent ? "text-foreground" : "text-white"}`}>
+              <h1 className={`font-bold text-sm sm:text-lg md:text-xl truncate max-w-[160px] sm:max-w-[220px] md:max-w-none ${isScrolled && !forceTransparent ? "text-foreground" : "text-white"}`}>
                 Dandeli budget friendly resorts
               </h1>
-              <p className={`text-xs truncate max-w-[220px] sm:max-w-none ${isScrolled && !forceTransparent ? "text-muted-foreground" : "text-white/80"}`}>
+              <p className={`hidden sm:block text-xs sm:text-sm truncate max-w-[180px] sm:max-w-[220px] md:max-w-none ${isScrolled && !forceTransparent ? "text-muted-foreground" : "text-white/80"}`}>
                 Experience Nature's Paradise
               </p>
             </div>
@@ -102,7 +102,7 @@ const Header = () => {
                     scrollToSection(link.href);
                   }
                 }}
-                className={`font-medium transition-colors hover:text-primary ${
+                className={`font-medium transition-colors hover:text-amber-300 ${
                   isScrolled && !forceTransparent ? "text-foreground" : "text-white"
                 }`}
               >
@@ -112,9 +112,6 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:block">
-            <WhatsAppButton className="shadow-medium" />
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -147,15 +144,14 @@ const Header = () => {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }
+                    setIsMobileMenuOpen(false);
                   }}
-                  className="w-full py-3 px-4 rounded-lg font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                  className="w-full py-3 px-4 rounded-lg font-medium text-foreground hover:bg-primary/10 hover:text-amber-300 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="mt-2 px-4">
-                <WhatsAppButton className="w-full" />
-              </div>
+              
             </nav>
           </div>
         )}
