@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const faqs = [
   {
@@ -36,21 +37,22 @@ const FAQ = () => {
   return (
     <section className="py-20 px-4 bg-muted/30">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-xl text-muted-foreground">
-            Everything you need to know about your Dandeli adventure
-          </p>
-        </div>
+        <AnimateOnScroll animationType="fadeIn" delay={0}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-muted-foreground">
+              Everything you need to know about your Dandeli adventure
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-card border-0 rounded-xl shadow-soft px-6 slide-up"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
+            <AnimateOnScroll key={index} animationType="slideUp" delay={index * 50}>
+              <AccordionItem
+                value={`item-${index}`}
+                className="bg-card border-0 rounded-xl shadow-soft px-6"
+              >
               <AccordionTrigger className="text-left font-semibold hover:text-primary">
                 {faq.question}
               </AccordionTrigger>
@@ -58,6 +60,7 @@ const FAQ = () => {
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
+            </AnimateOnScroll>
           ))}
         </Accordion>
       </div>

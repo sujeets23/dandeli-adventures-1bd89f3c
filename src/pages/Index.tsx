@@ -10,6 +10,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import Activities from "@/components/Activities";
 import { resorts } from "@/data/resorts";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const Index: React.FC = () => {
   return (
@@ -19,42 +20,48 @@ const Index: React.FC = () => {
 
       <section id="resorts" className="py-12 sm:py-16 md:py-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16 fade-in">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Featured Dandeli Resorts</h2>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">Handpicked luxury resorts and adventure camps for your perfect getaway</p>
-          </div>
+          <AnimateOnScroll animationType="fadeIn" delay={0}>
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Featured Dandeli Resorts</h2>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">Handpicked luxury resorts and adventure camps for your perfect getaway</p>
+            </div>
+          </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {resorts.map((resort) => (
-              <ResortCard key={resort.id} id={resort.id} name={resort.name} description={resort.description} price={resort.price} image={resort.image} />
-            ))}
-          </div>
+          <AnimateOnScroll animationType="slideUp" delay={100}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {resorts.map((resort, index) => (
+                <AnimateOnScroll key={resort.id} animationType="scale" delay={index * 50} className="h-full">
+                  <ResortCard id={resort.id} name={resort.name} description={resort.description} price={resort.price} image={resort.image} />
+                </AnimateOnScroll>
+              ))}
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
-      <div className="fade-in slide-up">
+      <AnimateOnScroll animationType="slideUp" delay={0}>
         <Activities />
-      </div>
+      </AnimateOnScroll>
 
-      <div id="why-choose-us" className="fade-in slide-up">
+      <AnimateOnScroll id="why-choose-us" animationType="fadeIn" delay={0}>
         <WhyChooseUs />
-      </div>
+      </AnimateOnScroll>
 
-      <div id="testimonials" className="fade-in slide-up">
+      <AnimateOnScroll id="testimonials" animationType="slideUp" delay={0}>
         <Testimonials />
-      </div>
+      </AnimateOnScroll>
 
-      <div id="faq" className="fade-in slide-up">
+      <AnimateOnScroll id="faq" animationType="fadeIn" delay={0}>
         <FAQ />
-      </div>
+      </AnimateOnScroll>
 
-      <div className="fade-in slide-up">
+      <AnimateOnScroll animationType="slideUp" delay={0}>
         <FinalCTA />
-      </div>
+      </AnimateOnScroll>
 
-      <div className="fade-in slide-up">
+      <AnimateOnScroll animationType="fadeIn" delay={0}>
         <Footer />
-      </div>
+      </AnimateOnScroll>
 
       <CallButton variant="floating" />
       <WhatsAppButton variant="floating" />

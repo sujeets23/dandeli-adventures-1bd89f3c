@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { resorts } from "@/data/resorts";
 import { useState, useEffect, useCallback } from "react";
 import galleryImages from "@/data/galleryImages";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const ResortDetail = () => {
   const { id } = useParams();
@@ -376,8 +377,9 @@ const ResortDetail = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-12">
         {/* Price & Amenities Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
-          <Card className="lg:col-span-2 p-4 sm:p-6 md:p-8 shadow-medium border-0 relative overflow-hidden">
+        <AnimateOnScroll animationType="slideUp" delay={0}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
+            <Card className="lg:col-span-2 p-4 sm:p-6 md:p-8 shadow-medium border-0 relative overflow-hidden">
               <div className="flex items-start justify-between mb-4 sm:mb-6 gap-4">
                 <div className="min-w-0">
                   <p className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">Starting from</p>
@@ -413,11 +415,13 @@ const ResortDetail = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground">Timings and availability are shown here. Use the contact section below to reach us.</p>
               </div>
           </Card>
-        </div>
+          </div>
+        </AnimateOnScroll>
 
         {/* Gallery Section */}
         {galleryImagesList.length > 0 && (
-          <Card className="p-4 sm:p-6 mb-8 sm:mb-10 md:mb-12 shadow-xl border-0 bg-card">
+          <AnimateOnScroll animationType="fadeIn" delay={100}>
+            <Card className="p-4 sm:p-6 mb-8 sm:mb-10 md:mb-12 shadow-xl border-0 bg-card">
             <div className="max-w-7xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Gallery</h2>
               <div className="relative">
@@ -447,13 +451,17 @@ const ResortDetail = () => {
               </div>
             </div>
           </Card>
+          </AnimateOnScroll>
         )}
 
         {/* Dedicated Contact CTAs section */}
-        <ContactCTAs message={whatsappMessage} resortName={resort.name} />
+        <AnimateOnScroll animationType="slideUp" delay={150}>
+          <ContactCTAs message={whatsappMessage} resortName={resort.name} />
+        </AnimateOnScroll>
 
         {/* Package Details */}
-        <Card className="p-4 sm:p-6 md:p-8 mb-8 sm:mb-10 md:mb-12 shadow-medium border-0">
+        <AnimateOnScroll animationType="slideUp" delay={200}>
+          <Card className="p-4 sm:p-6 md:p-8 mb-8 sm:mb-10 md:mb-12 shadow-medium border-0">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Package Inclusions</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {resort.inclusions.map((inclusion, index) => (
@@ -464,9 +472,11 @@ const ResortDetail = () => {
             ))}
           </div>
         </Card>
+        </AnimateOnScroll>
 
         {/* Terms & Conditions */}
-        <Card className="p-4 sm:p-6 md:p-8 shadow-medium border-0 bg-muted/30">
+        <AnimateOnScroll animationType="fadeIn" delay={250}>
+          <Card className="p-4 sm:p-6 md:p-8 shadow-medium border-0 bg-muted/30">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Terms & Conditions</h2>
           <ul className="space-y-2 sm:space-y-3">
             {resort.terms.map((term, index) => (
@@ -477,6 +487,7 @@ const ResortDetail = () => {
             ))}
           </ul>
         </Card>
+        </AnimateOnScroll>
       </div>
 
       {/* Lightbox */}

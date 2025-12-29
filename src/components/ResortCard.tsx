@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import WhatsAppButton from "./WhatsAppButton";
 import { Phone } from "lucide-react";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 interface ResortCardProps {
   id: string;
@@ -14,8 +15,8 @@ interface ResortCardProps {
 
 const ResortCard = ({ id, name, description, price, image }: ResortCardProps) => {
   return (
-    <Link to={`/resort/${id}`} className="block group">
-      <Card className="overflow-hidden border-0 shadow-soft hover:shadow-large transition-all duration-500 bg-gradient-card slide-up cursor-pointer">
+    <Link to={`/resort/${id}`} className="block group h-full">
+      <Card className="overflow-hidden border-0 shadow-soft hover:shadow-large transition-all duration-500 bg-gradient-card cursor-pointer h-full">
         <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
           <img
             src={image}

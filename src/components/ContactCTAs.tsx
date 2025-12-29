@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Phone, Mail } from "lucide-react";
 import WhatsAppButton from "./WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 type Props = {
   message?: string;
@@ -29,7 +30,8 @@ const ContactCTAs = ({ message, resortName }: Props) => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
-      <div className="bg-card rounded-xl p-6 shadow-xl">
+      <AnimateOnScroll animationType="slideUp" delay={0}>
+        <div className="bg-card rounded-xl p-6 shadow-xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-left">
             <h3 className="text-2xl font-bold">Need help booking?</h3>
@@ -60,6 +62,7 @@ const ContactCTAs = ({ message, resortName }: Props) => {
           </div>
         </div>
       </div>
+      </AnimateOnScroll>
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
           <div className="bg-background rounded-xl shadow-2xl p-6 w-full max-w-md">

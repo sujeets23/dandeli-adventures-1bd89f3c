@@ -8,6 +8,7 @@ import syntheriRocksImage from "@/assets/Syntheri rocks.jpg";
 import backWaterImage from "@/assets/Back water.jpg";
 import moulangiEcoParkImage from "@/assets/Moulangi eco park.jpg";
 import skiesPointImage from "@/assets/Skies point.jpg";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const activities = [
   {
@@ -70,20 +71,22 @@ const Activities = () => {
   return (
     <section id="activities" className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-background to-muted/30">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Adventure Activities</h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
-            Thrilling experiences and outdoor adventures await you in Dandeli
-          </p>
-        </div>
+        <AnimateOnScroll animationType="fadeIn" delay={0}>
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Adventure Activities</h2>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
+              Thrilling experiences and outdoor adventures await you in Dandeli
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {activities.map((activity, index) => {
             return (
-              <Card
-                key={index}
-                className="overflow-hidden shadow-medium border-0 hover:shadow-large transition-all duration-300 group hover:-translate-y-2 bg-card"
-              >
+              <AnimateOnScroll key={index} animationType="scale" delay={index * 50}>
+                <Card
+                  className="overflow-hidden shadow-medium border-0 hover:shadow-large transition-all duration-300 group hover:-translate-y-2 bg-card"
+                >
                 <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
                   <img
                     src={activity.image}
@@ -101,6 +104,7 @@ const Activities = () => {
                   <p className="text-xs sm:text-sm text-muted-foreground">{activity.description}</p>
                 </div>
               </Card>
+              </AnimateOnScroll>
             );
           })}
         </div>

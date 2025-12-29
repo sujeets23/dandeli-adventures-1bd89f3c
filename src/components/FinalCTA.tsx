@@ -1,5 +1,6 @@
 import WhatsAppButton from "./WhatsAppButton";
 import { Sparkles } from "lucide-react";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const FinalCTA = () => {
   return (
@@ -11,23 +12,31 @@ const FinalCTA = () => {
       </div>
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
-          <Sparkles className="h-5 w-5" />
-          <span className="font-medium">Limited Time Offers Available</span>
-        </div>
+        <AnimateOnScroll animationType="fadeIn" delay={0}>
+          <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+            <Sparkles className="h-5 w-5" />
+            <span className="font-medium">Limited Time Offers Available</span>
+          </div>
+        </AnimateOnScroll>
         
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-          Ready for Your Dandeli Adventure?
-        </h2>
+        <AnimateOnScroll animationType="slideUp" delay={100}>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Ready for Your Dandeli Adventure?
+          </h2>
+        </AnimateOnScroll>
         
-        <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
-          Don't miss out on creating unforgettable memories in nature's paradise. Book your dream resort today!
-        </p>
+        <AnimateOnScroll animationType="fadeIn" delay={200}>
+          <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
+            Don't miss out on creating unforgettable memories in nature's paradise. Book your dream resort today!
+          </p>
+        </AnimateOnScroll>
         
-        <WhatsAppButton 
-          message="Hi! I want to plan my Dandeli trip. Can you help me choose the perfect resort and package?"
-          className="text-lg px-10 py-7 shadow-large"
-        />
+        <AnimateOnScroll animationType="scale" delay={300}>
+          <WhatsAppButton 
+            message="Hi! I want to plan my Dandeli trip. Can you help me choose the perfect resort and package?"
+            className="text-lg px-10 py-7 shadow-large"
+          />
+        </AnimateOnScroll>
       </div>
     </section>
   );
