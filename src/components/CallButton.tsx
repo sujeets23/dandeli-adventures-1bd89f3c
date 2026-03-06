@@ -8,7 +8,7 @@ interface CallButtonProps {
 }
 
 const CallButton = ({ 
-  phoneNumber = "+918217885207",
+  phoneNumber = "+918217871420",
   className = "",
   variant = "default"
 }: CallButtonProps) => {

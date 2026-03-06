@@ -10,7 +10,7 @@ interface WhatsAppButtonProps {
 
 const WhatsAppButton = ({ 
   message = "Hi, I want to book a resort in Dandeli!",
-  phoneNumber = "918217885207",
+  phoneNumber = "918217871420",
   className = "",
   variant = "default"
 }: WhatsAppButtonProps) => {
