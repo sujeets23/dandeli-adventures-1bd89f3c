@@ -42,7 +42,7 @@ const ContactCTAs = ({ message, resortName }: Props) => {
             <WhatsAppButton message={whatsappMessage} className="w-full sm:w-auto" />
 
             <Button asChild size="lg" className="w-full sm:w-auto">
-              <a href="tel:+918217871420" className="inline-flex items-center justify-center bg-primary text-primary-foreground px-4 py-3 rounded-full font-semibold shadow-medium hover:bg-primary/90 transition-colors">
+              <a href="tel:+918217885207" className="inline-flex items-center justify-center bg-primary text-primary-foreground px-4 py-3 rounded-full font-semibold shadow-medium hover:bg-primary/90 transition-colors">
                 <Phone className="h-5 w-5 mr-2" />
                 Call Us
               </a>
